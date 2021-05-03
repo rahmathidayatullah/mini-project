@@ -1,6 +1,13 @@
 import React from "react";
 
-export default function Brand({ width, height, className, fill }) {
+export default function Brand({
+  width,
+  height,
+  className,
+  fill,
+  strokeColor,
+  strokeWidth,
+}) {
   return (
     <svg
       width={width}

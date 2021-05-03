@@ -230,7 +230,7 @@ export default function Component() {
       <h1 className="mt-4 mb-3">Component Toggle</h1>
       <div className="relative">
         <button
-          className="relative left-36 w-8 h-8 outline-none focus:outline-none rounded-lg bg-gray-5"
+          className="relative left-36 w-8 h-8 outline-none focus:outline-none rounded-lg hover:bg-gray-5"
           onClick={() =>
             menuToggle === false ? setMenuToggle(true) : setMenuToggle(false)
           }

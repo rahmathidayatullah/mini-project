@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Add() {
+export default function Add({ width, height, className, fill }) {
   return (
     <svg
       width={width}
@@ -21,7 +21,7 @@ export default function Add() {
   );
 }
 
-Brand.defaultProps = {
+Add.defaultProps = {
   width: "22",
   height: "23",
   fill: "#262626",

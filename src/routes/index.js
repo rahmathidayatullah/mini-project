@@ -5,6 +5,11 @@ import Todos from "pages/Todos";
 
 const router = [
   {
+    path: "/todos",
+    exact: false,
+    component: Todos,
+  },
+  {
     path: "/",
     exact: false,
     component: Signin,
@@ -13,11 +18,6 @@ const router = [
     path: "/signup",
     exact: false,
     component: Signup,
-  },
-  {
-    path: "/todos",
-    exact: false,
-    component: Todos,
   },
 ];
 

@@ -3,13 +3,11 @@ import Progress from "components/Progress";
 import MenuToggle from "components/MenuToggle";
 import IconMore from "assets/icon/More";
 
-export default function ItemGroup({ className }) {
+export default function ItemGroup({ className, text }) {
   const [menuToggle, setMenuToggle] = useState(false);
   return (
     <div className={`border border-gray rounded p-4 bg-white ${className}`}>
-      <p className="font-medium">
-        Re-designed the zero-g doggie bags. No more spills!
-      </p>
+      <p className="font-medium">{text}</p>
       <div className="flex items-center w-full justify-between mt-6">
         <div className="max-w-50%">
           <Progress
@@ -18,7 +16,7 @@ export default function ItemGroup({ className }) {
         </div>
         <div className="relative">
           <button
-            className="relative w-8 h-8 outline-none focus:outline-none rounded-lg bg-gray-5"
+            className="relative w-8 h-8 outline-none focus:outline-none rounded-lg hover:bg-gray-5 duration-200"
             onClick={() =>
               menuToggle === false ? setMenuToggle(true) : setMenuToggle(false)
             }
@@ -31,3 +29,6 @@ export default function ItemGroup({ className }) {
     </div>
   );
 }
+ItemGroup.defaultProps = {
+  text: "Re-designed the zero-g doggie bags. No more spills!",
+};
