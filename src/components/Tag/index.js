@@ -18,7 +18,7 @@ export default function Tag({
 Tag.defaultProps = {
   borderColor: "border-pinkSecondary",
   bgColor: "bg-pink",
-  borderColor: "border-pink",
+  // borderColor: "border-pink",
   textColor: "text-pink",
   text: "Magenta",
 };
