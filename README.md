@@ -34,7 +34,7 @@
 
 ## Build Setup
 1. Clone repository
-`$ git clone https://github.com/rahmathidayatullah/mini-project`
+`https://github.com/rahmathidayatullah/mini-project.git`
 
 2. Install depedencies
 ```bash
@@ -62,17 +62,19 @@ $ yarn build or npm run build
 
 ## Screenshot
 
-1. Signin
-   <img src="screenshot/1.signin.png">
-   <img src="screenshot/2.signin-required.png">
+1. https://github.com/rahmathidayatullah/mini-project.git
+   <img src="screenshot/form-login.png">
+   <img src="screenshot/alert-form-login.png">
 
 2. Signup
-   <img src="screenshot/3.signup.png">
-   <img src="screenshot/4.signup-required.png">
+   <img src="screenshot/form-signup.png">
+   <img src="screenshot/alert-form-signup.png">
 
-5. CRUD Todos or Taks 
-   <img src="screenshot/5.todos-read.png">
-   <img src="screenshot/6.todos-create.png">
-   <img src="screenshot/7.todos-update.png">
-   <img src="screenshot/8.todos-delete.png">
-   <img src="screenshot/9.todos-move.png">
+5. CRUD and alert Todos or Taks 
+   <img src="screenshot/todos.png">
+   <img src="screenshot/modal-create-task.png">
+   <img src="screenshot/modal-delete-task.png">
+   <img src="screenshot/modal-update-task.png">
+   <img src="screenshot/alert-modal-create-task.png">
+   <img src="screenshot/alert-modal-update-task.png">
+   <img src="screenshot/show-toggle.png">
