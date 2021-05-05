@@ -3,7 +3,7 @@ import IconArrowRight from "assets/icon/Arrow";
 import IconEdit from "assets/icon/Edit";
 import IconDelete from "assets/icon/Delete";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchTodos } from "features/Todos/actions";
 import { patchData } from "utils/fetchData";
 

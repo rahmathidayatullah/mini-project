@@ -1,15 +1,6 @@
 import React from "react";
 
-export default function Modal({
-  maxWidth,
-  show,
-  icon,
-  content,
-  title,
-  btn1,
-  btn2,
-  width,
-}) {
+export default function Modal({ maxWidth, show, icon, content, title, width }) {
   return (
     <div
       className={`fixed inset-0 bg-black bg-opacity-30 h-screen duration-200 ${
@@ -22,13 +13,7 @@ export default function Modal({
         {icon}
         <div className="w-full">
           <p className="mb-2 font-bold text-base leading-6">{title}</p>
-          <div>
-            <div className="pb-6">{content}</div>
-            <div className="flex items-center w-full justify-end">
-              <div className="mr-2">{btn1}</div>
-              {btn2}
-            </div>
-          </div>
+          {content}
         </div>
       </div>
     </div>

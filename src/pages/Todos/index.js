@@ -3,17 +3,21 @@ import IconBrand from "assets/icon/Brand";
 import IconAdd from "assets/icon/Add";
 import Tag from "components/Tag";
 import ItemGroup from "components/ItemGroup";
-import Modal from "components/Modal";
-import TextInput from "components/TextInput";
-import Button from "components/Button";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchTodos } from "features/Todos/actions";
+import Create from "./create";
 
 export default function Todos() {
   const dispatch = useDispatch();
   const todos = useSelector((state) => state.todos);
 
-  const [modalNewTask, setModalNewTask] = React.useState(false);
+  const [isShowCreate, setIsShowCreate] = React.useState(false);
+  const [idTodos, setIdTodos] = React.useState(null);
+
+  const handleShowCreate = (data) => {
+    setIdTodos(data.id);
+    setIsShowCreate(true);
+  };
 
   React.useEffect(() => {
     dispatch(fetchTodos());
@@ -100,7 +104,7 @@ export default function Todos() {
                     {/* btn new task */}
                     <button
                       className="flex items-center outline-none focus:outline-none"
-                      onClick={() => setModalNewTask(true)}
+                      onClick={() => handleShowCreate(todo)}
                     >
                       <IconAdd className="mr-2" />
                       <p className="leading-5 text-dark-2">New Task</p>
@@ -117,38 +121,13 @@ export default function Todos() {
           </button>
         </div>
       </div>
-      <Modal
-        maxWidth="max-w-576px"
-        width="w-576px"
-        show={modalNewTask}
-        title="Create Task"
-        content={
-          <div>
-            <p className="text-xs leading-4 mb-1">Task Name</p>
-            <TextInput />
-            <p className="text-xs leading-4 mb-1 mt-2">Progress</p>
-            <div className="w-99px">
-              <TextInput placeholder="0%" />
-            </div>
-          </div>
-        }
-        btn1={
-          <Button
-            bgColor="white"
-            borderColor="graySecondary"
-            textColor="text-darkSecondary"
-            label="Cancel"
-            onClick={() => setModalNewTask(false)}
-          />
-        }
-        btn2={
-          <Button
-            bgColor="bg-greenSecondary"
-            textColor="text-white"
-            label="Save Task"
-          />
-        }
+      {/* start modal create */}
+      <Create
+        show={isShowCreate}
+        close={() => setIsShowCreate(false)}
+        idTodos={idTodos}
       />
+      {/* end modal create */}
     </div>
   );
 }
