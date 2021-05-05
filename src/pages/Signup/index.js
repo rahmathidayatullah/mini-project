@@ -33,6 +33,7 @@ export default function Signup() {
     try {
       setLoading(true);
       const res = await postData("signup", data);
+      console.log(res);
       if (res.status === 201) {
         setLoading(false);
         const token = res.data.auth_token;
@@ -49,6 +50,8 @@ export default function Signup() {
           "server",
           "Kata sandi yang dimasukan harus password"
         );
+      } else if (error.response.status === 422) {
+        setError("server", "server", error.response.data.message);
       }
     }
   };
