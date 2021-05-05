@@ -62,14 +62,14 @@ $ yarn build or npm run build
 
 ## Screenshot
 
-1. https://github.com/rahmathidayatullah/mini-project.git
-   ##
+1. https://github.com/rahmathidayatullah/mini-project.git <br />
    Form login
    ##
    <img src="screenshot/form-login.png"> <br/>
-   ## Alert form login
-   <img src="screenshot/alert-form-login.png">
+   Alert form login
    ##
+   <img src="screenshot/alert-form-login.png"><br />
+   
 2. https://mini-project-puce.vercel.app/signup
    ##
    Signup
