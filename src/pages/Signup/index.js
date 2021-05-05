@@ -1,11 +1,11 @@
-import React from "react";
+import * as React from "react";
 import TextInput from "components/TextInput";
 import { useForm } from "react-hook-form";
 import Button from "components/Button";
 import { useHistory, Link } from "react-router-dom";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
-import { postData } from "api/auth";
+import { postData } from "utils/fetchData";
 import { userLogin } from "features/Auth/actions";
 
 const schema = yup.object().shape({
@@ -33,7 +33,6 @@ export default function Signup() {
     try {
       setLoading(true);
       const res = await postData("signup", data);
-      console.log(res);
       if (res.status === 201) {
         setLoading(false);
         const token = res.data.auth_token;
@@ -57,34 +56,42 @@ export default function Signup() {
   };
 
   return (
-    <div>
+    <div className="flex items-center h-screen">
       {errors?.server && <p>{errors.server.message}</p>}
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-96 max-w-sm border p-4 rounded-lg m-auto"
+      >
+        <h1 className="text-center mb-3 font-semibold">Form Signup</h1>
         <TextInput
-          placeholder="masukan nama"
+          placeholder="Masukan nama"
           error={errors?.name?.message}
           register={register}
           name="name"
+          className="mt-2"
         />
         <TextInput
-          placeholder="masukan email"
+          placeholder="Masukan email"
           error={errors?.email?.message}
           register={register}
           name="email"
+          className="mt-2"
         />
         <TextInput
-          placeholder="masukan password"
+          placeholder="Masukan password"
           error={errors?.password?.message}
           register={register}
           name="password"
           type="password"
+          className="mt-2"
         />
         <TextInput
-          placeholder="masukan konfirmasi password"
+          placeholder="Masukan konfirmasi password"
           error={errors?.password_confirmation?.message}
           register={register}
           name="password_confirmation"
           type="password"
+          className="mt-2"
         />
 
         {loading ? (
@@ -95,13 +102,16 @@ export default function Signup() {
             bgColor="bg-greenSecondary"
             textColor="text-white"
             label="Daftar"
+            className="mt-2"
           />
         )}
 
         <div className="flex justify-center mt-3">
           <p className="text-sm">
-            Sudah punya akun?
-            <Link to="/">Masuk</Link>
+            Sudah punya akun?&nbsp;
+            <Link to="/" className="text-blue">
+              <u>Login</u>
+            </Link>
           </p>
         </div>
       </form>

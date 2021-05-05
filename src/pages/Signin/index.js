@@ -5,7 +5,7 @@ import Button from "components/Button";
 import { useHistory, Link } from "react-router-dom";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
-import { postData } from "api/auth";
+import { postData } from "utils/fetchData";
 import { userLogin } from "features/Auth/actions";
 
 const schema = yup.object().shape({
@@ -25,85 +25,52 @@ export default function Signin() {
   });
   const [loading, setLoading] = React.useState(false);
 
-  const onSubmit = async ({ email, password }) => {
-    // console.log("data", data);
-    // try {
-    //   setLoading(true);
-    //   const res = await postData("auth/login", data);
-    //   console.log("res", res);
-    //   if (res.status === 200) {
-    //     setLoading(false);
-    //     const token = res.data.auth_token;
-
-    //     dispatch(userLogin(token));
-    //     setLoading(false);
-    //     history.push("/todos");
-    //   }
-    // } catch (error) {
-    //   console.log("erooorrr");
-    //   (falsesetLoading);
-    //   if (error.response.status === 401) {
-    //     setError(
-    //       "server",
-    //       "server",
-    //       "Akun yang anda masukan belum terdaftar, silahkan periksa email dan password"
-    //     );
-    //   }
-    // }
-
-    // let { data } = await postData(email, password);
-    // if (data.message === "Invalid credentials") {
-    //   setLoading(false);
-    //   setError(
-    //     "server",
-    //     "server",
-    //     "Akun yang anda masukan belum terdaftar, silahkan periksa email dan password"
-    //   );
-    //   console.log("data salah");
-    // } else {
-    //   setLoading(true);
-    //   let { data } = await postData(email, password);
-    //   console.log("res", data);
-    //   // console.log(res);
-    //   setLoading(false);
-    //   const token = data.auth_token;
-    //   console.log(token);
-    //   dispatch(userLogin(token));
-    //   history.push("/todos");
-    // }
-
+  const onSubmit = async (data) => {
     try {
       setLoading(true);
-      let { data } = await postData(email, password);
-      console.log(data);
-      setLoading(false);
-      const token = data.auth_token;
-      dispatch(userLogin(token));
-      history.push("/todos");
+      const res = await postData("auth/login", data);
+      if (res.status === 200) {
+        setLoading(false);
+        const token = res.data.auth_token;
+
+        dispatch(userLogin(token));
+        setLoading(false);
+        history.push("/todos");
+      }
     } catch (error) {
       setLoading(false);
-      setError(
-        "server",
-        "server",
-        "Akun yang anda masukan belum terdaftar, silahkan periksa email dan password"
-      );
+      if (error.response.status === 401) {
+        setError(
+          "server",
+          "server",
+          "Akun yang anda masukan belum terdaftar, silahkan periksa email dan password"
+        );
+      }
     }
   };
 
   return (
-    <div>
+    <div className="flex items-center h-screen">
       {errors?.server && <p>{errors.server.message}</p>}
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-96 max-w-sm border p-4 rounded-lg m-auto"
+      >
+        <h1 className="text-center mb-3 font-semibold">Form Login</h1>
         <TextInput
           error={errors?.email?.message}
           register={register}
           name="email"
+          className="mt-2"
+          placeholder="Masukan email"
         />
         <TextInput
           error={errors?.password?.message}
           register={register}
           name="password"
           type="password"
+          className="mt-2"
+          placeholder="Masukan password"
         />
         {loading ? (
           <p>lagi loading...</p>
@@ -113,12 +80,15 @@ export default function Signin() {
             bgColor="bg-greenSecondary"
             textColor="text-white"
             label="Masuk"
+            className="mt-2"
           />
         )}
         <div className="flex justify-center mt-3">
           <p className="text-sm">
-            Belum punya akun?
-            <Link to="/signup">Daftar</Link>
+            Belum punya akun?&nbsp;
+            <Link to="/signup" className="text-blue">
+              <u>Daftar</u>
+            </Link>
           </p>
         </div>
       </form>
