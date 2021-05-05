@@ -5,6 +5,7 @@ import Todos from "pages/Todos";
 import Logout from "pages/Logout";
 import GuardRoute from "components/GuardRoute";
 import GuardRouteOnly from "components/GuardRouteOnly";
+import NotFound from "pages/NotFound";
 
 const TodosPage = () => {
   return (
@@ -53,6 +54,11 @@ const router = [
     path: "/logout",
     exact: false,
     component: Logout,
+  },
+  {
+    path: "*",
+    exact: true,
+    component: NotFound,
   },
 ];
 
