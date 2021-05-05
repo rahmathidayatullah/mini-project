@@ -67,9 +67,7 @@ $ yarn build or npm run build
    Form login
    ##
    <img src="screenshot/form-login.png">
-   ##
-   Alert form login
-   ##
+   ## Alert form login
    <img src="screenshot/alert-form-login.png">
    ##
 2. https://mini-project-puce.vercel.app/signup
