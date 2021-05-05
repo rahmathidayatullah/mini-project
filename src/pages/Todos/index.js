@@ -12,7 +12,6 @@ import Edit from "./edit";
 export default function Todos() {
   const dispatch = useDispatch();
   const todos = useSelector((state) => state.todos);
-  console.log("todos", todos);
 
   const [isShowCreate, setIsShowCreate] = React.useState(false);
   const [isShowDelete, setIsShowDelete] = React.useState(false);
@@ -44,9 +43,9 @@ export default function Todos() {
     dispatch(fetchTodos());
   }, [dispatch]);
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex lg:h-screen lg:overflow-hidden">
       {/* sidebar */}
-      <div className="h-full w-68 bg-dark flex justify-center">
+      <div className="h-screen lg:h-full w-68 bg-dark flex justify-center">
         <IconBrand className="mt-5" />
       </div>
       {/* content */}
@@ -61,7 +60,7 @@ export default function Todos() {
           {/* data looping group task except btn add new group */}
           {todos.data.map((todo, i) => {
             return (
-              <div className="grid-cols-1" key={i}>
+              <div className="col-span-4 sm:col-span-2 lg:col-span-1" key={i}>
                 {/* wrap group 01 */}
                 <div
                   className={`

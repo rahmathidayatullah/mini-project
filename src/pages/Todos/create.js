@@ -1,7 +1,6 @@
 import * as React from "react";
 import Form from "./form";
 import Modal from "components/Modal";
-import { patchData } from "utils/fetchData";
 
 export default function TodosCreate({ show, close, idTodos }) {
   return (

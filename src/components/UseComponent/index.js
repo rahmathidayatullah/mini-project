@@ -4,17 +4,17 @@ import Modal from "../Modal";
 import TextInput from "../TextInput";
 import Tag from "../Tag";
 import Progress from "../Progress";
-import MenuToggle from "../MenuToggle";
 import IconWarning from "assets/icon/Warning";
 import IconCheck from "assets/icon/Check";
 import IconClose from "assets/icon/Close";
-import IconMore from "assets/icon/More";
+import IconEdit from "assets/icon/Edit";
+import IconDelete from "assets/icon/Delete";
+import IconArrowRight from "assets/icon/Arrow";
 import ItemGroup from "components/ItemGroup";
 
 export default function Component() {
   const [modal, setModal] = useState(false);
   const [modalLarge, setModalLarge] = useState(false);
-  const [menuToggle, setMenuToggle] = useState(false);
   return (
     <div className="px-10 pb-32">
       <h1 className="mt-4 mb-3">Component Button</h1>
@@ -237,26 +237,48 @@ export default function Component() {
           value={<IconClose />}
         />
       </div>
-
-      {/* Menu Toggle */}
-      <h1 className="mt-4 mb-3">Component Toggle</h1>
-      <div className="relative">
-        <button
-          className="relative left-36 w-8 h-8 outline-none focus:outline-none rounded-lg hover:bg-gray-5"
-          onClick={() =>
-            menuToggle === false ? setMenuToggle(true) : setMenuToggle(false)
-          }
-        >
-          <IconMore className="absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2" />
-          {menuToggle === false ? "" : <MenuToggle />}
-        </button>
-      </div>
-
-      {/* ItemGroup */}
-      <h1 className="mt-20 mb-3">Component Item Group</h1>
-      <div className="max-w-xs">
-        <ItemGroup className="mt-6" />
-        <ItemGroup className="mt-4" />
+      <div className="flex items-center mt-12">
+        <div>
+          {/* Menu Toggle */}
+          <h1 className="mb-3">Component Toggle</h1>
+          <ul className="py-2 rounded-lg bg-white shadowModal border min-w-145 min-w-145 w-145">
+            <li className="flex items-center py-6px pl-5 pr-4 text-dark-2 hover:bg-unguSecondary hover:text-unguPrimary duration-200 cursor-pointer">
+              <IconArrowRight fill="currentColor" className="mr-4" />
+              <p className="currentColor font-openSans text-sm leading-5">
+                Move Right
+              </p>
+            </li>
+            <li className="flex items-center py-6px pl-5 pr-4 text-dark-2 hover:bg-unguSecondary hover:text-unguPrimary duration-200 cursor-pointer">
+              <IconArrowRight
+                fill="currentColor"
+                className="mr-4 transform rotate-180"
+              />
+              <p className="currentColor font-openSans text-sm leading-5">
+                Move Left
+              </p>
+            </li>
+            <li className="flex items-center py-6px pl-5 pr-4 text-dark-2 hover:bg-unguSecondary hover:text-unguPrimary duration-200 cursor-pointer">
+              <IconEdit fill="currentColor" className="mr-4" />
+              <p className="currentColor font-openSans text-sm leading-5">
+                Edit
+              </p>
+            </li>
+            <li className="flex items-center py-6px pl-5 pr-4 text-dark-2 hover:bg-unguSecondary hover:text-unguPrimary duration-200 cursor-pointer">
+              <IconDelete fill="currentColor" className="mr-4" />
+              <p className="currentColor font-openSans text-sm leading-5">
+                Delete
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div className="ml-32">
+          {/* ItemGroup */}
+          <h1>Component Item Group</h1>
+          <div className="max-w-xs flex items-center mt-6">
+            <ItemGroup />
+            <ItemGroup className="ml-6" />
+          </div>
+        </div>
       </div>
     </div>
   );

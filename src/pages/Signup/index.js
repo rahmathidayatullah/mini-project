@@ -9,15 +9,15 @@ import { postData } from "utils/fetchData";
 import { userLogin } from "features/Auth/actions";
 
 const schema = yup.object().shape({
-  password: yup.string().required("masukan kata sandi anda."),
+  password: yup.string().required("Please insert your password"),
   password_confirmation: yup
     .string()
-    .required("masukan konfirmasi kata sandi anda."),
-  name: yup.string().required("masukan nama anda."),
+    .required("Input your password confirmation"),
+  name: yup.string().required("Please insert your name"),
   email: yup
     .string()
-    .required("email tidak boleh kosong.")
-    .email("email yang anda masukan tidak valid."),
+    .required("Email should not be empty")
+    .email("The email you entered is invalid"),
 });
 
 export default function Signup() {
@@ -47,7 +47,7 @@ export default function Signup() {
         setError(
           "server",
           "server",
-          "Kata sandi yang dimasukan harus password"
+          "Passwords that were entered had to be passwords"
         );
       } else if (error.response.status === 422) {
         setError("server", "server", error.response.data.message);
