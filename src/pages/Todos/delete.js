@@ -9,8 +9,6 @@ import { fetchTodos } from "features/Todos/actions";
 export default function TodosDelete({ show, close, idTodos, idItems }) {
   const dispatch = useDispatch();
   const [loading, setLoading] = React.useState(false);
-  console.log("idItems");
-  console.log(idItems);
 
   const onSubmit = async () => {
     try {

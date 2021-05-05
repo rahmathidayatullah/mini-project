@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchTodos } from "features/Todos/actions";
 import Create from "./create";
 import Delete from "./delete";
+import Edit from "./edit";
 
 export default function Todos() {
   const dispatch = useDispatch();
@@ -14,8 +15,10 @@ export default function Todos() {
 
   const [isShowCreate, setIsShowCreate] = React.useState(false);
   const [isShowDelete, setIsShowDelete] = React.useState(false);
+  const [isShowEdit, setIsShowEdit] = React.useState(false);
   const [idTodos, setIdTodos] = React.useState(null);
   const [idItems, setIdItems] = React.useState(null);
+  const [data, setData] = React.useState({});
 
   const handleShowCreate = (data) => {
     setIdTodos(data.id);
@@ -26,6 +29,14 @@ export default function Todos() {
     setIdTodos(idTodos.id);
     setIdItems(idItem.id);
     setIsShowDelete(true);
+  };
+
+  const handleShowEdit = (idTodos, data) => {
+    setIdTodos(idTodos.id);
+    setIdItems(data.id);
+    setIsShowEdit(true);
+    setData(data);
+    console.log(data);
   };
 
   React.useEffect(() => {
@@ -104,6 +115,7 @@ export default function Todos() {
                               handleShowDelete={() =>
                                 handleShowDelete(todo, data)
                               }
+                              handleShowEdit={() => handleShowEdit(todo, data)}
                             />
                           </div>
                         );
@@ -148,6 +160,15 @@ export default function Todos() {
         idItems={idItems}
       />
       {/* end: modal delete */}
+      {/* start: modal edit */}
+      <Edit
+        show={isShowEdit}
+        close={() => setIsShowEdit(false)}
+        idTodos={idTodos}
+        idItems={idItems}
+        data={data}
+      />
+      {/* end: modal edit */}
     </div>
   );
 }

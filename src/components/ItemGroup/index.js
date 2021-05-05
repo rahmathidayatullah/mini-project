@@ -46,6 +46,7 @@ export default function ItemGroup({ className, text, ...props }) {
                 index={props.index}
                 data={props.data}
                 handleShowDelete={props.handleShowDelete}
+                handleShowEdit={props.handleShowEdit}
               />
             )}
           </button>
