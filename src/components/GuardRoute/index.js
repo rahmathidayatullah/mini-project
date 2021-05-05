@@ -5,9 +5,7 @@ import { useSelector } from "react-redux";
 const GuardRoute = ({ children, ...rest }) => {
   let { token } = useSelector((state) => state.auth);
 
-  return (
-    <Route {...rest}>{token ? children : <Redirect to="/logout" />}</Route>
-  );
+  return <Route {...rest}>{token ? children : <Redirect to="/" />}</Route>;
 };
 
 export default GuardRoute;

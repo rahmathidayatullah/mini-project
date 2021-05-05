@@ -2,6 +2,7 @@ import Signin from "pages/Signin";
 import Signup from "pages/Signup";
 import Component from "components/UseComponent";
 import Todos from "pages/Todos";
+import Logout from "pages/Logout";
 import GuardRoute from "components/GuardRoute";
 import GuardRouteOnly from "components/GuardRouteOnly";
 
@@ -29,14 +30,14 @@ const SignupPage = () => {
 
 const router = [
   {
-    path: "/todos",
-    exact: false,
-    component: TodosPage,
-  },
-  {
     path: "/",
     exact: true,
     component: SigninPage,
+  },
+  {
+    path: "/todos",
+    exact: false,
+    component: TodosPage,
   },
   {
     path: "/signup",
@@ -47,6 +48,11 @@ const router = [
     path: "/component",
     exact: true,
     component: Component,
+  },
+  {
+    path: "/logout",
+    exact: false,
+    component: Logout,
   },
 ];
 
