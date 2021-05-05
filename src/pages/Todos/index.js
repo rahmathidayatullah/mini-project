@@ -47,13 +47,13 @@ export default function Todos() {
     dispatch(fetchTodos());
   }, [dispatch]);
   return (
-    <div className="flex lg:h-screen lg:overflow-hidden">
+    <div className="flex flex-col xss:flex-row lg:h-screen lg:overflow-hidden">
       {/* sidebar */}
-      <div className="h-screen lg:h-full w-68 bg-dark flex justify-center">
-        <IconBrand className="mt-5" />
+      <div className="w-full xss:w-68  xss:h-screen lg:h-full  bg-dark flex justify-center py-3 xss:py-0">
+        <IconBrand className="xss:mt-5" />
       </div>
       {/* content */}
-      <div className="bg-white px-50 py-5 h-full" style={{ width: "94%" }}>
+      <div className="w-full xss:w-94% bg-white px-3 xss:px-50 py-5 h-full">
         <div className="flex items-center mb-6 justify-between">
           <h3 className="font-medium text-dark-2 text-xl">Product Roudmap</h3>
           <Link to="/logout">

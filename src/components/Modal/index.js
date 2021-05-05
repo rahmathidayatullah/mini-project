@@ -4,7 +4,7 @@ export default function Modal({ maxWidth, show, icon, content, title, width }) {
   return (
     <div
       className={`fixed inset-0 bg-black bg-opacity-30 h-screen duration-200 ${
-        show ? "top-0" : "-top-full"
+        show ? "top-0" : "top-150% xss:-top-full"
       }`}
     >
       <div

@@ -3,6 +3,12 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      screens: {
+        xss: "500px",
+      },
+      inset: {
+        "150%": "-150%",
+      },
       spacing: {
         "5px": "5px",
         "10px": "10px",
@@ -18,6 +24,7 @@ module.exports = {
         "10px": "10px",
         "576px": "576px",
         145: "145px",
+        "94%": "94%",
       },
       maxWidth: {
         "576px": "576px",
