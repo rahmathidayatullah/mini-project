@@ -37,7 +37,7 @@ export default function TodosDelete({ show, close, idTodos, idItems }) {
             <br />
             your action can’t be reverted.
           </p>
-          <div className="flex items-center w-full justify-end">
+          <div className="flex items-center w-full justify-end mt-6">
             <Button
               bgColor="white"
               borderColor="graySecondary"

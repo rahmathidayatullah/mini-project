@@ -8,8 +8,8 @@ import { useDispatch } from "react-redux";
 import { fetchTodos } from "features/Todos/actions";
 
 const schema = yup.object().shape({
-  name: yup.string().required("nama taks tidak boleh kosong."),
-  progress_percentage: yup.string().required("progress tidak boleh kosong."),
+  name: yup.string().required("Name task cannot empty !"),
+  progress_percentage: yup.string().required("Progress cannot empty !"),
 });
 
 export default function TodosForm({ close, idTodos, type, data, idItems }) {
@@ -75,7 +75,11 @@ export default function TodosForm({ close, idTodos, type, data, idItems }) {
         <div className="w-99px">
           <TextInput
             placeholder="0 %"
-            error={errors?.progress_percentage?.message}
+            error={
+              <p className="whitespace-nowrap">
+                {errors?.progress_percentage?.message}
+              </p>
+            }
             register={register}
             type="number"
             name="progress_percentage"
