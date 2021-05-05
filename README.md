@@ -66,7 +66,7 @@ $ yarn build or npm run build
    <img src="screenshot/1.signin.png">
    <img src="screenshot/2.signin-required.png">
 
-2. Signun
+2. Signup
    <img src="screenshot/3.signup.png">
    <img src="screenshot/4.signup-required.png">
 
