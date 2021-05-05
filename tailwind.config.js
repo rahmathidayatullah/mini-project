@@ -16,12 +16,16 @@ module.exports = {
         68: "68px",
         50: "50px",
         "10px": "10px",
+        "576px": "576px",
+        "306px": "306px",
       },
       maxWidth: {
+        "576px": "576px",
         400: "400px",
         "50%": "50%",
       },
       minWidth: {
+        "306px": "306px",
         145: "145px",
       },
       lineHeight: {

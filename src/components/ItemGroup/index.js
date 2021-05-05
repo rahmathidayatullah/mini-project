@@ -3,15 +3,31 @@ import Progress from "components/Progress";
 import MenuToggle from "components/MenuToggle";
 import IconMore from "assets/icon/More";
 
-export default function ItemGroup({ className, text }) {
+export default function ItemGroup({ className, text, ...props }) {
   const [menuToggle, setMenuToggle] = useState(false);
+  let progress = [];
+  if (props.progress === 10) progress.push("w-10%");
+  if (props.progress === 20) progress.push("w-1/5");
+  if (props.progress === 30) progress.push("w-30%");
+  if (props.progress === 40) progress.push("w-2/5");
+  if (props.progress === 50) progress.push("w-2/4");
+  if (props.progress === 60) progress.push("w-3/5");
+  if (props.progress === 70) progress.push("w-70%");
+  if (props.progress === 80) progress.push("w-4/5");
+  if (props.progress === 90) progress.push("w-90%");
+  if (props.progress === 100) progress.push("w-full");
   return (
     <div className={`border border-gray rounded p-4 bg-white ${className}`}>
       <p className="font-medium">{text}</p>
       <div className="flex items-center w-full justify-between mt-6">
         <div className="max-w-50%">
           <Progress
-            value={<p className="leading-22 text-gray-7 text-xs">10%</p>}
+            persentase={`${progress.join("")}`}
+            value={
+              <p className="leading-22 text-gray-7 text-xs whitespace-nowrap">
+                {`${props.progress} %`}{" "}
+              </p>
+            }
           />
         </div>
         <div className="relative">
@@ -22,7 +38,15 @@ export default function ItemGroup({ className, text }) {
             }
           >
             <IconMore className="absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2" />
-            {menuToggle === false ? "" : <MenuToggle />}
+            {menuToggle === false ? (
+              ""
+            ) : (
+              <MenuToggle
+                toggle={props.toggle}
+                index={props.index}
+                data={props.data}
+              />
+            )}
           </button>
         </div>
       </div>
