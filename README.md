@@ -63,9 +63,11 @@ $ yarn build or npm run build
 ## Screenshot
 
 1. https://github.com/rahmathidayatullah/mini-project.git
+   ##
    <img src="screenshot/form-login.png">
+   ##
    <img src="screenshot/alert-form-login.png">
-
+   ##
 2. Signup
    <img src="screenshot/form-signup.png">
    <img src="screenshot/alert-form-signup.png">
