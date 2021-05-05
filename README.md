@@ -19,6 +19,7 @@
   - [Screenshot](#Screenshot)
 
 ## TODO Tasks
+- [x] Component Task
 - [x] CRUD Items taks via web
 - [x] Move Items taks via web
 - [x] Signin and authentication with JWT
@@ -101,4 +102,10 @@ $ yarn build or npm run build
    <img src="screenshot/alert-modal-update-task.png"><br /><br />
    Modal show toggle
    ##
-   <img src="screenshot/show-toggle.png">
+   <img src="screenshot/show-toggle.png"><br /><br />
+4. https://mini-project-puce.vercel.app/component <br /><br />
+   Component Task
+   ## 
+   <img src="screenshot/component-1.png"><br /><br />
+   <img src="screenshot/component-2.png"><br /><br />
+   
