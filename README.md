@@ -83,7 +83,7 @@ $ yarn build or npm run build
    ##
    Todos index
    ##
-   <img src="screenshot/todo-index.png"><br /><br />
+   <img src="screenshot/todos.png"><br /><br />
    Modal create task
    ##
    <img src="screenshot/modal-create-task.png"><br /><br />
