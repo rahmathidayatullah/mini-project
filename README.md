@@ -64,12 +64,22 @@ $ yarn build or npm run build
 
 1. https://github.com/rahmathidayatullah/mini-project.git
    ##
+   Form login
+   ##
    <img src="screenshot/form-login.png">
+   ##
+   Alert form login
    ##
    <img src="screenshot/alert-form-login.png">
    ##
-2. Signup
+2. https://mini-project-puce.vercel.app/signup
+   ##
+   Signup
+   ##
    <img src="screenshot/form-signup.png">
+   ##
+   Alert form Signup
+   ##
    <img src="screenshot/alert-form-signup.png">
 
 5. CRUD and alert Todos or Taks 
