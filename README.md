@@ -66,7 +66,7 @@ $ yarn build or npm run build
    ##
    Form login
    ##
-   <img src="screenshot/form-login.png">
+   <img src="screenshot/form-login.png"> <br/>
    ## Alert form login
    <img src="screenshot/alert-form-login.png">
    ##
