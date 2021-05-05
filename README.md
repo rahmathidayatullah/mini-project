@@ -3,7 +3,7 @@
 > Mini Project
 
 <p align="center">
-  <a href="https://reactjs.org/">
+  <a href="https://mini-project-puce.vercel.app">
     Demo Apps
   </a>
 </p>
@@ -59,6 +59,15 @@ $ yarn start or npm run start
 
 # built to production mode
 $ yarn build or npm run build
+```
+
+4. Account using login
+```bash
+# Email      
+$ ramhat@codeathome.com
+
+# Password
+$ password
 ```
 
 ## Screenshot
