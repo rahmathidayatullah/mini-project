@@ -9,11 +9,11 @@ import { postData } from "utils/fetchData";
 import { userLogin } from "features/Auth/actions";
 
 const schema = yup.object().shape({
-  password: yup.string().required("masukan kata sandi anda."),
+  password: yup.string().required("Enter your password !"),
   email: yup
     .string()
-    .required("email tidak boleh kosong.")
-    .email("email yang anda masukan tidak valid."),
+    .required("Email cannot be empty !")
+    .email("The email you entered is invalid !"),
 });
 
 export default function Signin() {
@@ -43,7 +43,7 @@ export default function Signin() {
         setError(
           "server",
           "server",
-          "Akun yang anda masukan belum terdaftar, silahkan periksa email dan password"
+          "The account you entered has not been registered, please check your email and password"
         );
       }
     }
@@ -51,7 +51,11 @@ export default function Signin() {
 
   return (
     <div className="flex items-center h-screen">
-      {errors?.server && <p>{errors.server.message}</p>}
+      {errors?.server && (
+        <p className="fixed top-0 left-0 right-0 bg-red p-3 text-center text-white font-meduim">
+          {errors.server.message}
+        </p>
+      )}
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-96 max-w-sm border p-4 rounded-lg m-auto"
@@ -72,17 +76,13 @@ export default function Signin() {
           className="mt-2"
           placeholder="Masukan password"
         />
-        {loading ? (
-          <p>lagi loading...</p>
-        ) : (
-          <Button
-            type="submit"
-            bgColor="bg-greenSecondary"
-            textColor="text-white"
-            label="Masuk"
-            className="mt-2"
-          />
-        )}
+        <Button
+          type="submit"
+          bgColor="bg-greenSecondary"
+          textColor="text-white"
+          label={loading ? "Loading..." : "Signin"}
+          className="mt-2"
+        />
         <div className="flex justify-center mt-3">
           <p className="text-sm">
             Belum punya akun?&nbsp;
