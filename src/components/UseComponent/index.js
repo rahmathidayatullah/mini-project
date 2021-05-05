@@ -10,7 +10,6 @@ import IconCheck from "assets/icon/Check";
 import IconClose from "assets/icon/Close";
 import IconMore from "assets/icon/More";
 import ItemGroup from "components/ItemGroup";
-import { patchData } from "utils/fetchData";
 
 export default function Component() {
   const [modal, setModal] = useState(false);

@@ -66,7 +66,10 @@ export default function MenuToggle(props) {
         <IconEdit fill="currentColor" className="mr-4" />
         <p className="currentColor font-openSans text-sm leading-5">Edit</p>
       </li>
-      <li className="flex items-center py-6px pl-5 pr-4 text-dark-2 hover:bg-unguSecondary hover:text-unguPrimary duration-200 cursor-pointer">
+      <li
+        className="flex items-center py-6px pl-5 pr-4 text-dark-2 hover:bg-unguSecondary hover:text-unguPrimary duration-200 cursor-pointer"
+        onClick={props.handleShowDelete}
+      >
         <IconDelete fill="currentColor" className="mr-4" />
         <p className="currentColor font-openSans text-sm leading-5">Delete</p>
       </li>

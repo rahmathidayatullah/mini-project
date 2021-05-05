@@ -6,17 +6,26 @@ import ItemGroup from "components/ItemGroup";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchTodos } from "features/Todos/actions";
 import Create from "./create";
+import Delete from "./delete";
 
 export default function Todos() {
   const dispatch = useDispatch();
   const todos = useSelector((state) => state.todos);
 
   const [isShowCreate, setIsShowCreate] = React.useState(false);
+  const [isShowDelete, setIsShowDelete] = React.useState(false);
   const [idTodos, setIdTodos] = React.useState(null);
+  const [idItems, setIdItems] = React.useState(null);
 
   const handleShowCreate = (data) => {
     setIdTodos(data.id);
     setIsShowCreate(true);
+  };
+
+  const handleShowDelete = (idTodos, idItem) => {
+    setIdTodos(idTodos.id);
+    setIdItems(idItem.id);
+    setIsShowDelete(true);
   };
 
   React.useEffect(() => {
@@ -92,6 +101,9 @@ export default function Todos() {
                               toggle={todos.data}
                               data={data}
                               index={i}
+                              handleShowDelete={() =>
+                                handleShowDelete(todo, data)
+                              }
                             />
                           </div>
                         );
@@ -128,6 +140,14 @@ export default function Todos() {
         idTodos={idTodos}
       />
       {/* end modal create */}
+      {/* start: modal delete */}
+      <Delete
+        show={isShowDelete}
+        close={() => setIsShowDelete(false)}
+        idTodos={idTodos}
+        idItems={idItems}
+      />
+      {/* end: modal delete */}
     </div>
   );
 }

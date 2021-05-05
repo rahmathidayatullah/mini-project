@@ -6,16 +6,16 @@ import IconMore from "assets/icon/More";
 export default function ItemGroup({ className, text, ...props }) {
   const [menuToggle, setMenuToggle] = useState(false);
   let progress = [];
-  if (props.progress === 10) progress.push("w-10%");
-  if (props.progress === 20) progress.push("w-1/5");
-  if (props.progress === 30) progress.push("w-30%");
-  if (props.progress === 40) progress.push("w-2/5");
-  if (props.progress === 50) progress.push("w-2/4");
-  if (props.progress === 60) progress.push("w-3/5");
-  if (props.progress === 70) progress.push("w-70%");
-  if (props.progress === 80) progress.push("w-4/5");
-  if (props.progress === 90) progress.push("w-90%");
-  if (props.progress === 100) progress.push("w-full");
+  if (props.progress < 20) progress.push("w-10%");
+  if (props.progress >= 20 && props.progress < 30) progress.push("w-1/5");
+  if (props.progress >= 30 && props.progress < 40) progress.push("w-30%");
+  if (props.progress >= 40 && props.progress < 50) progress.push("w-2/5");
+  if (props.progress >= 50 && props.progress < 60) progress.push("w-2/4");
+  if (props.progress >= 60 && props.progress < 70) progress.push("w-3/5");
+  if (props.progress >= 70 && props.progress < 80) progress.push("w-70%");
+  if (props.progress >= 80 && props.progress < 90) progress.push("w-4/5");
+  if (props.progress >= 90 && props.progress < 100) progress.push("w-90%");
+  if (props.progress >= 100) progress.push("w-full");
   return (
     <div className={`border border-gray rounded p-4 bg-white ${className}`}>
       <p className="font-medium">{text}</p>
@@ -45,6 +45,7 @@ export default function ItemGroup({ className, text, ...props }) {
                 toggle={props.toggle}
                 index={props.index}
                 data={props.data}
+                handleShowDelete={props.handleShowDelete}
               />
             )}
           </button>
