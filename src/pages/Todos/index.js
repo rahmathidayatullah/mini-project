@@ -12,6 +12,7 @@ import Edit from "./edit";
 export default function Todos() {
   const dispatch = useDispatch();
   const todos = useSelector((state) => state.todos);
+  console.log("todos", todos);
 
   const [isShowCreate, setIsShowCreate] = React.useState(false);
   const [isShowDelete, setIsShowDelete] = React.useState(false);
@@ -54,13 +55,13 @@ export default function Todos() {
           Product Roudmap
         </h3>
         <div
-          className="flex w-full items-start overflow-x-scroll border border-gray border-opacity-30 p-2 rounded-lg"
+          className="grid grid-cols-4 gap-4 border-gray border-opacity-30 p-2 rounded-lg"
           style={{ height: "90%" }}
         >
           {/* data looping group task except btn add new group */}
           {todos.data.map((todo, i) => {
             return (
-              <div className="w-306px min-w-306px mr-4" key={i}>
+              <div className="grid-cols-1" key={i}>
                 {/* wrap group 01 */}
                 <div
                   className={`
@@ -138,11 +139,6 @@ export default function Todos() {
               </div>
             );
           })}
-          {/* btn add new group */}
-          <button className="mb-3 rounded border border-gray py-2 px-4 flex items-center bg-white hover:bg-gray text-gray hover:text-black min-w-max outline-none duration-200 focus:outline-none">
-            <IconAdd className="mr-2" fill="currentColor" />
-            <p className="leading-6 currentColor">New group</p>
-          </button>
         </div>
       </div>
       {/* start modal create */}

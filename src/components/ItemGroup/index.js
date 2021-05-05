@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Progress from "components/Progress";
 import MenuToggle from "components/MenuToggle";
 import IconMore from "assets/icon/More";
+import IconClose from "assets/icon/Close";
+import IconCheck from "assets/icon/Check";
 
 export default function ItemGroup({ className, text, ...props }) {
   const [menuToggle, setMenuToggle] = useState(false);
@@ -15,7 +17,17 @@ export default function ItemGroup({ className, text, ...props }) {
   if (props.progress >= 70 && props.progress < 80) progress.push("w-70%");
   if (props.progress >= 80 && props.progress < 90) progress.push("w-4/5");
   if (props.progress >= 90 && props.progress < 100) progress.push("w-90%");
-  if (props.progress >= 100) progress.push("w-full");
+  if (props.progress >= 100) progress.push("w-full bg-greenPrimary");
+  if (props.progress > 100) progress.push("w-full bg-red-6");
+  const checkPersen = () => {
+    if (props.progress === 100) {
+      return <IconCheck />;
+    } else if (props.progress < 100) {
+      return props.progress + "%";
+    } else {
+      return <IconClose />;
+    }
+  };
   return (
     <div className={`border border-gray rounded p-4 bg-white ${className}`}>
       <p className="font-medium">{text}</p>
@@ -25,7 +37,7 @@ export default function ItemGroup({ className, text, ...props }) {
             persentase={`${progress.join("")}`}
             value={
               <p className="leading-22 text-gray-7 text-xs whitespace-nowrap">
-                {`${props.progress} %`}{" "}
+                {checkPersen()}
               </p>
             }
           />

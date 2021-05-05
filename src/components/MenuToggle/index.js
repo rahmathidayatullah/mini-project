@@ -32,7 +32,7 @@ export default function MenuToggle(props) {
     if (res.status === 200) dispatch(fetchTodos());
   };
   return (
-    <ul className="absolute py-2 rounded-lg bg-white shadowModal border min-w-145 top-9 right-0">
+    <ul className="absolute py-2 rounded-lg bg-white shadowModal border min-w-145 top-9 right-0 z-20">
       {props.toggle.length - 1 - props.index === 0 ? (
         ""
       ) : (
