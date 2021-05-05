@@ -8,10 +8,14 @@ import { fetchTodos } from "features/Todos/actions";
 import Create from "./create";
 import Delete from "./delete";
 import Edit from "./edit";
+import Button from "components/Button";
+import { Link } from "react-router-dom";
+import ReactLoading from "react-loading";
 
 export default function Todos() {
   const dispatch = useDispatch();
   const todos = useSelector((state) => state.todos);
+  console.log("todos", todos);
 
   const [isShowCreate, setIsShowCreate] = React.useState(false);
   const [isShowDelete, setIsShowDelete] = React.useState(false);
@@ -50,14 +54,35 @@ export default function Todos() {
       </div>
       {/* content */}
       <div className="bg-white px-50 py-5 h-full" style={{ width: "94%" }}>
-        <h3 className="mb-6 font-medium text-dark-2 text-xl">
-          Product Roudmap
-        </h3>
+        <div className="flex items-center mb-6 justify-between">
+          <h3 className="font-medium text-dark-2 text-xl">Product Roudmap</h3>
+          <Link to="/logout">
+            <Button
+              bgColor="bg-greenSecondary"
+              textColor="text-white"
+              label="Logout"
+            />
+          </Link>
+        </div>
         <div
           className="grid grid-cols-4 gap-4 border-gray border-opacity-30 p-2 rounded-lg"
           style={{ height: "90%" }}
         >
           {/* data looping group task except btn add new group */}
+          {todos.status === "process" ? (
+            <div className="fixed inset-0 bg-black bg-opacity-10 z-50">
+              <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <ReactLoading
+                  type={"bars"}
+                  color={"#B7BDC9"}
+                  height={168}
+                  width={120}
+                />
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
           {todos.data.map((todo, i) => {
             return (
               <div className="col-span-4 sm:col-span-2 lg:col-span-1" key={i}>

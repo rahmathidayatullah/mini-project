@@ -14,7 +14,7 @@ export default function Button(props) {
   return (
     <button
       type={type}
-      className={`py-2 px-4 rounded-sm font-normal text-sm leading-22 py-5px border focus:outline-none outline-none ${bgColor} ${textColor} ${borderColor} ${className}`}
+      className={`py-2 px-4 rounded-sm font-normal text-sm leading-22 py-5px border focus:outline-none hover:bg-opacity-80 duration-200 outline-none ${bgColor} ${textColor} ${borderColor} ${className}`}
       onClick={onClick}
     >
       {label}
