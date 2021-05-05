@@ -10,6 +10,7 @@ import IconCheck from "assets/icon/Check";
 import IconClose from "assets/icon/Close";
 import IconMore from "assets/icon/More";
 import ItemGroup from "components/ItemGroup";
+import { patchData } from "utils/fetchData";
 
 export default function Component() {
   const [modal, setModal] = useState(false);
@@ -53,21 +54,34 @@ export default function Component() {
         show={modal}
         title="Delete Task"
         icon={<IconWarning className="mr-4" />}
-        btn1={
-          <Button
-            bgColor="white"
-            borderColor="graySecondary"
-            textColor="text-darkSecondary"
-            label="Cancel"
-            onClick={() => setModal(false)}
-          />
+        content={
+          <div>
+            <p className="text-sm leading-22">
+              Are you sure want to delete this task?
+              <br />
+              your action can’t be reverted.
+            </p>
+            <div className="flex items-center w-full justify-end">
+              <Button
+                bgColor="white"
+                borderColor="graySecondary"
+                textColor="text-darkSecondary"
+                label="Cancel"
+                onClick={() => setModal(false)}
+                className="mr-2"
+              />
+
+              <Button bgColor="bg-red" textColor="text-white" label="Delete" />
+            </div>
+          </div>
         }
-        btn2={<Button bgColor="bg-red" textColor="text-white" label="Delete" />}
       />
       {/* modal large with input content */}
       <Modal
         show={modalLarge}
         title="Create Task"
+        width="w-567px"
+        maxWidth="max-w-576px"
         content={
           <div>
             <p className="text-xs leading-4 mb-1">Task Name</p>
@@ -76,23 +90,22 @@ export default function Component() {
             <div className="w-99px">
               <TextInput placeholder="0%" />
             </div>
+            <div className="flex items-center w-full justify-end">
+              <Button
+                bgColor="white"
+                borderColor="graySecondary"
+                textColor="text-darkSecondary"
+                label="Cancel"
+                className="mr-2"
+                onClick={() => setModalLarge(false)}
+              />
+              <Button
+                bgColor="bg-greenSecondary"
+                textColor="text-white"
+                label="Save Task"
+              />
+            </div>
           </div>
-        }
-        btn1={
-          <Button
-            bgColor="white"
-            borderColor="graySecondary"
-            textColor="text-darkSecondary"
-            label="Cancel"
-            onClick={() => setModalLarge(false)}
-          />
-        }
-        btn2={
-          <Button
-            bgColor="bg-greenSecondary"
-            textColor="text-white"
-            label="Save Task"
-          />
         }
       />
       <h1 className="mt-4 mb-3">Component input</h1>
