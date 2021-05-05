@@ -118,3 +118,8 @@ $ password
    <img src="screenshot/component-1.png"><br /><br />
    <img src="screenshot/component-2.png"><br /><br />
    
+4. https://mini-project-puce.vercel.app/tes <br /><br />
+   Page Not found
+   ## 
+   <img src="screenshot/page-notfound.png"><br /><br />
+   
