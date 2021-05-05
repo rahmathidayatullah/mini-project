@@ -65,26 +65,40 @@ $ yarn build or npm run build
 1. https://github.com/rahmathidayatullah/mini-project.git <br />
    Form login
    ##
-   <img src="screenshot/form-login.png"> <br/>
+   <img src="screenshot/form-login.png"> <br/><br/>
    Alert form login
    ##
-   <img src="screenshot/alert-form-login.png"><br />
+   <img src="screenshot/alert-form-login.png"><br /><br />
    
-2. https://mini-project-puce.vercel.app/signup
-   ##
+2. https://mini-project-puce.vercel.app/signup <br /><br />
    Signup
    ##
-   <img src="screenshot/form-signup.png">
-   ##
+   <img src="screenshot/form-signup.png"> <br /><br/>
    Alert form Signup
    ##
-   <img src="screenshot/alert-form-signup.png">
+   <img src="screenshot/alert-form-signup.png"> <br /><br />
 
-5. CRUD and alert Todos or Taks 
-   <img src="screenshot/todos.png">
-   <img src="screenshot/modal-create-task.png">
-   <img src="screenshot/modal-delete-task.png">
-   <img src="screenshot/modal-update-task.png">
-   <img src="screenshot/alert-modal-create-task.png">
-   <img src="screenshot/alert-modal-update-task.png">
+3. https://mini-project-puce.vercel.app/todos <br /><br />
+   CRUD and alert Todos or Taks 
+   ##
+   Todos index
+   ##
+   <img src="screenshot/todos.png"><br /><br />
+   Modal create task
+   ##
+   <img src="screenshot/modal-create-task.png"><br /><br />
+   Modal delete task
+   ##
+   <img src="screenshot/modal-delete-task.png"><br /><br />
+   Modal update task
+   ##
+   <img src="screenshot/modal-update-task.png"><br /><br />
+   Modal alert create task
+   ##
+   <img src="screenshot/alert-modal-create-task.png"><br /><br />
+   Modal alert update task
+   ##
+   <img src="screenshot/alert-modal-update-task.png"><br /><br />
+   Modal show toggle
+   ##
    <img src="screenshot/show-toggle.png">
