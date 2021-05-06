@@ -6,6 +6,6 @@ export default function GuestOnlyRoute({ children, ...rest }) {
   let { token } = useSelector((state) => state.auth);
 
   return (
-    <Route {...rest}>{!token ? children : <Redirect to="/todos" />}</Route>
+    <Route {...rest}>{!token ? children : <Redirect to="/v1/todos" />}</Route>
   );
 }

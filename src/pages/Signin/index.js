@@ -35,7 +35,7 @@ export default function Signin() {
 
         dispatch(userLogin(token));
         setLoading(false);
-        history.push("/todos");
+        history.push("/v1/todos");
       }
     } catch (error) {
       setLoading(false);
@@ -86,7 +86,7 @@ export default function Signin() {
         <div className="flex justify-center mt-3">
           <p className="text-sm">
             Belum punya akun?&nbsp;
-            <Link to="/signup" className="text-blue">
+            <Link to="/v1/signup" className="text-blue">
               <u>Daftar</u>
             </Link>
           </p>

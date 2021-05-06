@@ -39,7 +39,7 @@ export default function Signup() {
 
         dispatch(userLogin(token));
         setLoading(false);
-        history.push("/todos");
+        history.push("/v1/todos");
       }
     } catch (error) {
       setLoading(false);
@@ -109,7 +109,7 @@ export default function Signup() {
         <div className="flex justify-center mt-3">
           <p className="text-sm">
             Sudah punya akun?&nbsp;
-            <Link to="/" className="text-blue">
+            <Link to="/v1" className="text-blue">
               <u>Login</u>
             </Link>
           </p>

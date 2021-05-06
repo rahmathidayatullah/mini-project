@@ -12,7 +12,7 @@ export default function Logout() {
     const logout = () => {
       dispatch(userLogout());
       setTimeout(() => {
-        history.push("/");
+        history.push("/v1");
       }, 3000);
     };
     logout();

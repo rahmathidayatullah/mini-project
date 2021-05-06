@@ -56,7 +56,7 @@ export default function Todos() {
       <div className="w-full xss:w-94% bg-white px-3 xss:px-50 py-5 h-full">
         <div className="flex items-center mb-6 justify-between">
           <h3 className="font-medium text-dark-2 text-xl">Product Roudmap</h3>
-          <Link to="/logout">
+          <Link to="/v1/logout">
             <Button
               bgColor="bg-greenSecondary"
               textColor="text-white"
