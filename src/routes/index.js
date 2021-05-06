@@ -38,13 +38,13 @@ const router = [
   },
   {
     path: "/v1/todos",
-    exact: false,
+    exact: true,
     component: TodosPage,
   },
   {
     path: "/v1",
-    exact: false,
-    component: Signin,
+    exact: true,
+    component: SigninPage,
   },
   {
     path: "/v1/signup",
@@ -58,7 +58,7 @@ const router = [
   },
   {
     path: "/v1/logout",
-    exact: false,
+    exact: true,
     component: Logout,
   },
   {
