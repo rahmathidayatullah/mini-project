@@ -7,7 +7,7 @@ export default function Logout() {
       <br />
       <p className="text-xs sm:text-4xl xl:text-8xl">Page not found.</p>
       <Link to="/v1/todos" className="mt-6 text-biru">
-        <u>Back to todos</u>
+        <u className="w-">Back to todos</u>
       </Link>
     </div>
   );

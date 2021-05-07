@@ -27,3 +27,7 @@
 .scroll-hidden::-webkit-scrollbar {
   display: none;
 }
+
+.progress-text p{
+white-space: nowrap;
+}

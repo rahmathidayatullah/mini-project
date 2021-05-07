@@ -1,12 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Progress from "components/Progress";
-import MenuToggle from "components/MenuToggle";
+import IconArrowRight from "assets/icon/Arrow";
+import IconEdit from "assets/icon/Edit";
+import IconDelete from "assets/icon/Delete";
+
+import { useDispatch } from "react-redux";
+import { fetchTodos } from "features/Todos/actions";
+import { patchData } from "utils/fetchData";
 import IconMore from "assets/icon/More";
 import IconClose from "assets/icon/Close";
 import IconCheck from "assets/icon/Check";
+import { useDetectOutsideClick } from "./useDetectOutsideClick";
 
 export default function ItemGroup({ className, text, ...props }) {
-  const [menuToggle, setMenuToggle] = useState(false);
+  const dispatch = useDispatch();
+  const dropdownRef = React.useRef(null);
+  const [isShow, setIsShow] = useDetectOutsideClick(dropdownRef, false);
+
   let progress = [];
   if (props.progress < 20) progress.push("w-10%");
   if (props.progress >= 20 && props.progress < 30) progress.push("w-1/5");
@@ -28,6 +38,28 @@ export default function ItemGroup({ className, text, ...props }) {
       return <IconClose />;
     }
   };
+
+  const handleMoveRight = async (data) => {
+    let payload = {
+      target_todo_id: props.toggle[props.index + 1].id,
+    };
+    let res = await patchData(
+      `todos/${props.toggle[props.index].id}/items/${data.id}`,
+      payload
+    );
+    if (res.status === 200) dispatch(fetchTodos());
+  };
+
+  const handleMoveLeft = async (data) => {
+    let payload = {
+      target_todo_id: props.toggle[props.index - 1].id,
+    };
+    let res = await patchData(
+      `todos/${props.toggle[props.index].id}/items/${data.id}`,
+      payload
+    );
+    if (res.status === 200) dispatch(fetchTodos());
+  };
   return (
     <div className={`border border-gray rounded p-4 bg-white ${className}`}>
       <p className="sm:text-sm xl:text-base font-medium">{text}</p>
@@ -45,21 +77,63 @@ export default function ItemGroup({ className, text, ...props }) {
         <div className="relative">
           <button
             className="relative w-8 h-8 outline-none focus:outline-none rounded-lg hover:bg-gray-5 duration-200"
-            onClick={() =>
-              menuToggle === false ? setMenuToggle(true) : setMenuToggle(false)
-            }
+            onClick={() => setIsShow(!isShow)}
           >
             <IconMore className="absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2" />
-            {menuToggle === false ? (
-              ""
-            ) : (
-              <MenuToggle
-                toggle={props.toggle}
-                index={props.index}
-                data={props.data}
-                handleShowDelete={props.handleShowDelete}
-                handleShowEdit={props.handleShowEdit}
-              />
+            {isShow && (
+              <ul
+                ref={dropdownRef}
+                className="absolute py-2 rounded-lg bg-white shadowModal border min-w-145 -top-6 -right-20 z-20"
+              >
+                {props.toggle.length - 1 - props.index === 0 ? (
+                  ""
+                ) : (
+                  <li
+                    onClick={() => handleMoveRight(props.data)}
+                    className="flex items-center py-6px pl-5 pr-4 text-dark-2 hover:bg-unguSecondary hover:text-unguPrimary duration-200 cursor-pointer"
+                  >
+                    <IconArrowRight fill="currentColor" className="mr-4" />
+                    <p className="currentColor font-openSans text-sm leading-5">
+                      Move Right
+                    </p>
+                  </li>
+                )}
+                {props.toggle.length - 1 - props.index ===
+                props.toggle.length - 1 ? (
+                  ""
+                ) : (
+                  <li
+                    onClick={() => handleMoveLeft(props.data)}
+                    className="flex items-center py-6px pl-5 pr-4 text-dark-2 hover:bg-unguSecondary hover:text-unguPrimary duration-200 cursor-pointer"
+                  >
+                    <IconArrowRight
+                      fill="currentColor"
+                      className="mr-4 transform rotate-180"
+                    />
+                    <p className="currentColor font-openSans text-sm leading-5">
+                      Move Left
+                    </p>
+                  </li>
+                )}
+                <li
+                  className="flex items-center py-6px pl-5 pr-4 text-dark-2 hover:bg-unguSecondary hover:text-unguPrimary duration-200 cursor-pointer"
+                  onClick={props.handleShowEdit}
+                >
+                  <IconEdit fill="currentColor" className="mr-4" />
+                  <p className="currentColor font-openSans text-sm leading-5">
+                    Edit
+                  </p>
+                </li>
+                <li
+                  className="flex items-center py-6px pl-5 pr-4 text-dark-2 hover:bg-unguSecondary hover:text-unguPrimary duration-200 cursor-pointer"
+                  onClick={props.handleShowDelete}
+                >
+                  <IconDelete fill="currentColor" className="mr-4" />
+                  <p className="currentColor font-openSans text-sm leading-5">
+                    Delete
+                  </p>
+                </li>
+              </ul>
             )}
           </button>
         </div>

@@ -47,7 +47,7 @@ export default function Todos() {
     dispatch(fetchTodos());
   }, [dispatch]);
   return (
-    <div className="flex flex-col xss:flex-row lg:h-screen lg:overflow-hidden">
+    <div className="flex flex-col xss:flex-row items-start  lg:overflow-hidden">
       {/* sidebar */}
       <div className="w-full xss:w-68  xss:h-screen lg:h-full  bg-dark flex justify-center py-3 xss:py-0">
         <IconBrand className="xss:mt-5" />
@@ -93,8 +93,8 @@ export default function Todos() {
                   ${i === 1 && "bg-purple border-purple"} 
                   ${i === 2 && "bg-biru border-biru"} 
                   ${i === 3 && "bg-green border-green"} 
-                  rounded border  px-3 pt-3 pb-4 overflow-y-hidden`}
-                  style={{ maxHeight: "68vh" }}
+                  rounded border  px-3 pt-3 pb-4`}
+                  // style={{ maxHeight: "77vh" }}
                 >
                   <div>
                     {/* tag from api */}
@@ -122,8 +122,8 @@ export default function Todos() {
                     </p>
                   </div>
                   <div
-                    className="overflow-y-scroll scroll-hidden"
-                    style={{ maxHeight: "55vh" }}
+                    className="scroll-hidden"
+                    // style={{ maxHeight: "55vh" }}
                   >
                     {/* data item for looping from api */}
                     {todo.items.length ? (

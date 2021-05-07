@@ -8,6 +8,8 @@ import { fetchTodos } from "features/Todos/actions";
 import { patchData } from "utils/fetchData";
 
 export default function MenuToggle(props) {
+  console.log("props.ref");
+  console.log(props.ref);
   const dispatch = useDispatch();
 
   const handleMoveRight = async (data) => {
@@ -32,7 +34,10 @@ export default function MenuToggle(props) {
     if (res.status === 200) dispatch(fetchTodos());
   };
   return (
-    <ul className="absolute py-2 rounded-lg bg-white shadowModal border min-w-145 top-9 right-0 z-20">
+    <ul
+      ref={props.ref}
+      className="absolute py-2 rounded-lg bg-white shadowModal border min-w-145 -top-6 -right-20 z-20"
+    >
       {props.toggle.length - 1 - props.index === 0 ? (
         ""
       ) : (
