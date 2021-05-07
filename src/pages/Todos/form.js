@@ -9,7 +9,10 @@ import { fetchTodos } from "features/Todos/actions";
 
 const schema = yup.object().shape({
   name: yup.string().required("Name task cannot empty !"),
-  progress_percentage: yup.string().required("Progress cannot empty !"),
+  progress_percentage: yup
+    .number()
+    .required("Progress cannot empty !")
+    .max(100, "The input cannot be more than 100"),
 });
 
 export default function TodosForm({ close, idTodos, type, data, idItems }) {
@@ -72,14 +75,10 @@ export default function TodosForm({ close, idTodos, type, data, idItems }) {
           className="mt-2"
         />
         <p className="text-xs leading-4 mb-1 mt-2">Progress</p>
-        <div className="w-99px">
+        <div className="w-99px progress-text">
           <TextInput
             placeholder="0 %"
-            error={
-              <p className="whitespace-nowrap">
-                {errors?.progress_percentage?.message}
-              </p>
-            }
+            error={errors?.progress_percentage?.message}
             register={register}
             type="number"
             name="progress_percentage"
