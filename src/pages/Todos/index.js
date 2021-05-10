@@ -65,8 +65,8 @@ export default function Todos() {
           </Link>
         </div>
         <div
-          className="grid grid-cols-4 gap-4 border-gray border-opacity-30 p-2 rounded-lg"
-          style={{ height: "90%" }}
+          className="grid grid-cols-4 gap-4 border-gray border-opacity-30 p-2 rounded-lg overflow-y-scroll"
+          style={{ height: "80vh" }}
         >
           {/* data looping group task except btn add new group */}
           {todos.status === "process" ? (

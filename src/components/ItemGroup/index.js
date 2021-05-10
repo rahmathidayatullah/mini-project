@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import * as React from "react";
 import Progress from "components/Progress";
 import IconArrowRight from "assets/icon/Arrow";
 import IconEdit from "assets/icon/Edit";
@@ -61,7 +61,10 @@ export default function ItemGroup({ className, text, ...props }) {
     if (res.status === 200) dispatch(fetchTodos());
   };
   return (
-    <div className={`border border-gray rounded p-4 bg-white ${className}`}>
+    <div
+      className={`border border-gray rounded p-4 bg-white ${className}`}
+      style={{ overflowWrap: "anywhere" }}
+    >
       <p className="sm:text-sm xl:text-base font-medium">{text}</p>
       <div className="flex items-center w-full justify-between mt-6">
         <div className="max-w-50%">

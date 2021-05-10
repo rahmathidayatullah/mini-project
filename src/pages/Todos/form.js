@@ -12,7 +12,8 @@ const schema = yup.object().shape({
   progress_percentage: yup
     .number()
     .required("Progress cannot empty !")
-    .max(100, "The input cannot be more than 100"),
+    .max(100, "The input cannot be more than 100")
+    .typeError("Progress task cannot empty !"),
 });
 
 export default function TodosForm({ close, idTodos, type, data, idItems }) {
