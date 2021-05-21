@@ -15,7 +15,6 @@ import ReactLoading from "react-loading";
 export default function Todos() {
   const dispatch = useDispatch();
   const todos = useSelector((state) => state.todos);
-  console.log("todos", todos);
 
   const [isShowCreate, setIsShowCreate] = React.useState(false);
   const [isShowDelete, setIsShowDelete] = React.useState(false);
@@ -68,7 +67,7 @@ export default function Todos() {
           className="grid grid-cols-4 gap-4 border-gray border-opacity-30 p-2 rounded-lg overflow-y-scroll"
           style={{ height: "80vh" }}
         >
-          {/* data looping group task except btn add new group */}
+          {/* data looping group task  */}
           {todos.status === "process" ? (
             <div className="fixed inset-0 bg-black bg-opacity-10 z-50">
               <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
@@ -86,7 +85,7 @@ export default function Todos() {
           {todos.data.map((todo, i) => {
             return (
               <div className="col-span-4 sm:col-span-2 lg:col-span-1" key={i}>
-                {/* wrap group 01 */}
+                {/* list group */}
                 <div
                   className={`
                   ${i === 0 && "bg-pink border-pink"} 
@@ -94,7 +93,6 @@ export default function Todos() {
                   ${i === 2 && "bg-biru border-biru"} 
                   ${i === 3 && "bg-green border-green"} 
                   rounded border  px-3 pt-3 pb-4`}
-                  // style={{ maxHeight: "77vh" }}
                 >
                   <div>
                     {/* tag from api */}
@@ -130,13 +128,18 @@ export default function Todos() {
                       todo.items.map((data, index) => {
                         return (
                           <div key={index}>
+                            {console.log("todos.data", todos.data)}
                             <ItemGroup
                               className="mb-3"
                               text={data.name}
                               progress={data.progress_percentage}
+                              // props data all todos for action
                               toggle={todos.data}
+                              // props data single for action
                               data={data}
+                              // props index data todo for action
                               index={i}
+                              // send data todo and data single todo way parameter
                               handleShowDelete={() =>
                                 handleShowDelete(todo, data)
                               }
@@ -150,7 +153,7 @@ export default function Todos() {
                         <p className="leading-6 text-gray">No Task Available</p>
                       </div>
                     )}
-                    {/* btn new task */}
+                    {/* btn new t`ask */}
                     <button
                       className="flex items-center outline-none focus:outline-none"
                       onClick={() => handleShowCreate(todo)}
@@ -174,6 +177,7 @@ export default function Todos() {
       {/* end modal create */}
       {/* start: modal delete */}
       <Delete
+        // send parameter id todo dan id items
         show={isShowDelete}
         close={() => setIsShowDelete(false)}
         idTodos={idTodos}

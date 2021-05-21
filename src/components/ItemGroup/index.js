@@ -29,6 +29,7 @@ export default function ItemGroup({ className, text, ...props }) {
   if (props.progress >= 90 && props.progress < 100) progress.push("w-90%");
   if (props.progress >= 100) progress.push("w-full bg-greenPrimary");
   if (props.progress > 100) progress.push("w-full bg-red-6");
+
   const checkPersen = () => {
     if (props.progress === 100) {
       return <IconCheck />;
@@ -51,9 +52,11 @@ export default function ItemGroup({ className, text, ...props }) {
   };
 
   const handleMoveLeft = async (data) => {
+    // send value target_todo_id to paylad
     let payload = {
       target_todo_id: props.toggle[props.index - 1].id,
     };
+    // get data todos and index, and get id from data and send server
     let res = await patchData(
       `todos/${props.toggle[props.index].id}/items/${data.id}`,
       payload
@@ -88,6 +91,7 @@ export default function ItemGroup({ className, text, ...props }) {
                 ref={dropdownRef}
                 className="absolute py-2 rounded-lg bg-white shadowModal border min-w-145 -top-6 -right-20 z-20"
               >
+                {/* get all data from todos and check length for validate show pr hide btn move left */}
                 {props.toggle.length - 1 - props.index === 0 ? (
                   ""
                 ) : (
@@ -101,6 +105,7 @@ export default function ItemGroup({ className, text, ...props }) {
                     </p>
                   </li>
                 )}
+                {/* get all data from todos and check length for validate show pr hide btn move right */}
                 {props.toggle.length - 1 - props.index ===
                 props.toggle.length - 1 ? (
                   ""
@@ -135,6 +140,9 @@ export default function ItemGroup({ className, text, ...props }) {
                   <p className="currentColor font-openSans text-sm leading-5">
                     Delete
                   </p>
+                </li>
+                <li onClick={() => console.log(props.toggle[props.index - 1])}>
+                  tes
                 </li>
               </ul>
             )}

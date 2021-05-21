@@ -30,7 +30,6 @@ export default function TodosForm({ close, idTodos, type, data, idItems }) {
       if (type === "edit") {
         data.target_todo_id = idTodos;
         const res = await patchData(`todos/${idTodos}/items/${idItems}`, data);
-
         if (res.status === 200) {
           setLoading(false);
           dispatch(fetchTodos());

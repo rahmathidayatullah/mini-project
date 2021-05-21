@@ -13,6 +13,7 @@ export default function TodosDelete({ show, close, idTodos, idItems }) {
   const onSubmit = async () => {
     try {
       setLoading(true);
+      // use idTodos and id item and send action to server
       const res = await deleteData(`todos/${idTodos}/items/${idItems}`);
 
       if (res.status === 204) {

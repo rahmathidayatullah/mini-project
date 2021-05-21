@@ -39,7 +39,8 @@ export default function Signup() {
 
         dispatch(userLogin(token));
         setLoading(false);
-        history.push("/v1/todos");
+        // history.push("/v1/todos");
+        history.push("/v1/login");
       }
     } catch (error) {
       setLoading(false);
